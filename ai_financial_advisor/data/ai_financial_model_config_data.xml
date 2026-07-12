@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- ================================================================ -->
+    <!-- AI Model Catalog — seed data                                      -->
+    <!-- ================================================================ -->
+    <!-- noupdate="1": this seeds the catalog once on install/first        -->
+    <!-- upgrade. After that, anything an admin adds or edits in the       -->
+    <!-- Configuration screen is left alone by future module upgrades.     -->
+    <!--                                                                  -->
+    <!-- "Active"/"Legacy" rows are turned on (active=True) and appear in  -->
+    <!-- the dropdowns immediately. Fully retired models are recorded too  -->
+    <!-- but archived (active=False) so the dropdowns never offer a dead   -->
+    <!-- model id — re-activate any of them from AI Models if you have     -->
+    <!-- grandfathered API access.                                        -->
+
+    <!-- ───────────────────────── Claude (Anthropic) ───────────────────────── -->
+    <record id="ai_model_claude_claude_opus_4_8" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">10</field>
+        <field name="name">claude-opus-4-8</field>
+        <field name="display_name">Claude Opus 4.8 (Flagship — Most Capable)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_claude_claude_opus_4_7" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">20</field>
+        <field name="name">claude-opus-4-7</field>
+        <field name="display_name">Claude Opus 4.7</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_claude_claude_opus_4_6" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">30</field>
+        <field name="name">claude-opus-4-6</field>
+        <field name="display_name">Claude Opus 4.6</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_claude_claude_opus_4_5" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">40</field>
+        <field name="name">claude-opus-4-5</field>
+        <field name="display_name">Claude Opus 4.5</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_claude_claude_opus_4_1" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">50</field>
+        <field name="name">claude-opus-4-1</field>
+        <field name="display_name">Claude Opus 4.1</field>
+        <field name="state">deprecated</field>
+        <field name="notes">Anthropic has announced retirement around Aug 5, 2026 — migrate soon.</field>
+    </record>
+    <record id="ai_model_claude_claude_sonnet_4_6" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">60</field>
+        <field name="name">claude-sonnet-4-6</field>
+        <field name="display_name">Claude Sonnet 4.6 (Recommended — Balanced)</field>
+        <field name="state">active</field>
+        <field name="is_default" eval="True"/>
+    </record>
+    <record id="ai_model_claude_claude_sonnet_4_5" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">70</field>
+        <field name="name">claude-sonnet-4-5</field>
+        <field name="display_name">Claude Sonnet 4.5</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_claude_claude_haiku_4_5_20251001" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">80</field>
+        <field name="name">claude-haiku-4-5-20251001</field>
+        <field name="display_name">Claude Haiku 4.5 (Fastest)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_claude_claude_opus_4" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">90</field>
+        <field name="name">claude-opus-4</field>
+        <field name="display_name">Claude Opus 4</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired — superseded by the Opus 4.x line.</field>
+    </record>
+    <record id="ai_model_claude_claude_sonnet_4" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">100</field>
+        <field name="name">claude-sonnet-4</field>
+        <field name="display_name">Claude Sonnet 4</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired — superseded by Sonnet 4.5/4.6.</field>
+    </record>
+    <record id="ai_model_claude_claude_3_7_sonnet_20250219" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">110</field>
+        <field name="name">claude-3-7-sonnet-20250219</field>
+        <field name="display_name">Claude 3.7 Sonnet</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired by Anthropic.</field>
+    </record>
+    <record id="ai_model_claude_claude_3_5_sonnet_20241022" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">120</field>
+        <field name="name">claude-3-5-sonnet-20241022</field>
+        <field name="display_name">Claude 3.5 Sonnet</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired by Anthropic.</field>
+    </record>
+    <record id="ai_model_claude_claude_3_opus_20240229" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">130</field>
+        <field name="name">claude-3-opus-20240229</field>
+        <field name="display_name">Claude 3 Opus</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired by Anthropic.</field>
+    </record>
+    <record id="ai_model_claude_claude_3_sonnet_20240229" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">140</field>
+        <field name="name">claude-3-sonnet-20240229</field>
+        <field name="display_name">Claude 3 Sonnet</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired by Anthropic.</field>
+    </record>
+    <record id="ai_model_claude_claude_3_5_haiku_20241022" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">150</field>
+        <field name="name">claude-3-5-haiku-20241022</field>
+        <field name="display_name">Claude 3.5 Haiku</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired by Anthropic.</field>
+    </record>
+    <record id="ai_model_claude_claude_3_haiku_20240307" model="ai.financial.model.config">
+        <field name="provider">claude</field>
+        <field name="sequence">160</field>
+        <field name="name">claude-3-haiku-20240307</field>
+        <field name="display_name">Claude 3 Haiku</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Retired by Anthropic.</field>
+    </record>
+
+    <!-- ───────────────────────── ChatGPT (OpenAI) ───────────────────────── -->
+    <record id="ai_model_chatgpt_gpt_5_5" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">10</field>
+        <field name="name">gpt-5.5</field>
+        <field name="display_name">GPT-5.5 (Default — Frontier)</field>
+        <field name="state">active</field>
+        <field name="is_default" eval="True"/>
+    </record>
+    <record id="ai_model_chatgpt_gpt_5_5_pro" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">20</field>
+        <field name="name">gpt-5.5-pro</field>
+        <field name="display_name">GPT-5.5 Pro (Highest Reasoning)</field>
+        <field name="state">active</field>
+        <field name="notes">Verify exact API id in OpenAI’s docs before relying on this in production.</field>
+    </record>
+    <record id="ai_model_chatgpt_gpt_5_4" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">30</field>
+        <field name="name">gpt-5.4</field>
+        <field name="display_name">GPT-5.4</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_chatgpt_gpt_5_4_mini" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">40</field>
+        <field name="name">gpt-5.4-mini</field>
+        <field name="display_name">GPT-5.4 Mini (Cheaper &amp; Faster)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_chatgpt_gpt_5_4_nano" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">50</field>
+        <field name="name">gpt-5.4-nano</field>
+        <field name="display_name">GPT-5.4 Nano (Fastest &amp; Cheapest)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_chatgpt_gpt_5_3_codex" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">60</field>
+        <field name="name">gpt-5.3-codex</field>
+        <field name="display_name">GPT-5.3 Codex (Agentic Coding Specialist)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_chatgpt_gpt_4o" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">70</field>
+        <field name="name">gpt-4o</field>
+        <field name="display_name">GPT-4o (Legacy)</field>
+        <field name="state">legacy</field>
+        <field name="notes">Removed from ChatGPT UI but still served via the API for now.</field>
+    </record>
+    <record id="ai_model_chatgpt_gpt_4_turbo" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">80</field>
+        <field name="name">gpt-4-turbo</field>
+        <field name="display_name">GPT-4 Turbo</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Long superseded — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_chatgpt_gpt_3_5_turbo" model="ai.financial.model.config">
+        <field name="provider">chatgpt</field>
+        <field name="sequence">90</field>
+        <field name="name">gpt-3.5-turbo</field>
+        <field name="display_name">GPT-3.5 Turbo</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Long superseded — kept for historical reference only.</field>
+    </record>
+
+    <!-- ───────────────────────── Gemini (Google) ───────────────────────── -->
+    <record id="ai_model_gemini_gemini_3_5_flash" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">10</field>
+        <field name="name">gemini-3.5-flash</field>
+        <field name="display_name">Gemini 3.5 Flash (Recommended — GA)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_gemini_gemini_3_5_pro_preview" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">20</field>
+        <field name="name">gemini-3.5-pro-preview</field>
+        <field name="display_name">Gemini 3.5 Pro (Preview)</field>
+        <field name="state">active</field>
+        <field name="notes">Preview models can change with shorter notice than GA releases.</field>
+    </record>
+    <record id="ai_model_gemini_gemini_3_1_pro_preview" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">30</field>
+        <field name="name">gemini-3.1-pro-preview</field>
+        <field name="display_name">Gemini 3.1 Pro Preview (Current Default)</field>
+        <field name="state">active</field>
+        <field name="is_default" eval="True"/>
+    </record>
+    <record id="ai_model_gemini_gemini_3_1_flash_lite" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">40</field>
+        <field name="name">gemini-3.1-flash-lite</field>
+        <field name="display_name">Gemini 3.1 Flash-Lite (Fast &amp; Cheap)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_gemini_gemini_2_5_pro" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">50</field>
+        <field name="name">gemini-2.5-pro</field>
+        <field name="display_name">Gemini 2.5 Pro</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_gemini_gemini_2_5_flash" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">60</field>
+        <field name="name">gemini-2.5-flash</field>
+        <field name="display_name">Gemini 2.5 Flash</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_gemini_gemini_2_5_flash_lite" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">70</field>
+        <field name="name">gemini-2.5-flash-lite</field>
+        <field name="display_name">Gemini 2.5 Flash-Lite (Economical)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_gemini_gemini_2_0_flash" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">80</field>
+        <field name="name">gemini-2.0-flash</field>
+        <field name="display_name">Gemini 2.0 Flash</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Shut down by Google (June 1, 2026) — requests now 404.</field>
+    </record>
+    <record id="ai_model_gemini_gemini_2_0_flash_lite" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">90</field>
+        <field name="name">gemini-2.0-flash-lite</field>
+        <field name="display_name">Gemini 2.0 Flash-Lite</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Shut down by Google (June 1, 2026) — requests now 404.</field>
+    </record>
+    <record id="ai_model_gemini_gemini_1_5_pro" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">100</field>
+        <field name="name">gemini-1.5-pro</field>
+        <field name="display_name">Gemini 1.5 Pro</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Shut down by Google — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_gemini_gemini_1_5_flash" model="ai.financial.model.config">
+        <field name="provider">gemini</field>
+        <field name="sequence">110</field>
+        <field name="name">gemini-1.5-flash</field>
+        <field name="display_name">Gemini 1.5 Flash</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Shut down by Google — kept for historical reference only.</field>
+    </record>
+
+    <!-- ───────────────────────── Grok (xAI) ───────────────────────── -->
+    <record id="ai_model_grok_grok_4_3" model="ai.financial.model.config">
+        <field name="provider">grok</field>
+        <field name="sequence">10</field>
+        <field name="name">grok-4.3</field>
+        <field name="display_name">Grok 4.3 (Default — Latest)</field>
+        <field name="state">active</field>
+        <field name="is_default" eval="True"/>
+    </record>
+    <record id="ai_model_grok_grok_4_20" model="ai.financial.model.config">
+        <field name="provider">grok</field>
+        <field name="sequence">20</field>
+        <field name="name">grok-4.20</field>
+        <field name="display_name">Grok 4.20</field>
+        <field name="state">active</field>
+        <field name="notes">Verify exact API id in xAI’s docs before relying on this in production.</field>
+    </record>
+    <record id="ai_model_grok_grok_4" model="ai.financial.model.config">
+        <field name="provider">grok</field>
+        <field name="sequence">30</field>
+        <field name="name">grok-4</field>
+        <field name="display_name">Grok 4 (Legacy)</field>
+        <field name="state">legacy</field>
+        <field name="notes">xAI redirects this slug to Grok 4.3 at Grok 4.3 rates.</field>
+    </record>
+    <record id="ai_model_grok_grok_3" model="ai.financial.model.config">
+        <field name="provider">grok</field>
+        <field name="sequence">40</field>
+        <field name="name">grok-3</field>
+        <field name="display_name">Grok 3 (Legacy)</field>
+        <field name="state">legacy</field>
+        <field name="notes">xAI redirects this slug to Grok 4.3 at Grok 4.3 rates.</field>
+    </record>
+    <record id="ai_model_grok_grok_2" model="ai.financial.model.config">
+        <field name="provider">grok</field>
+        <field name="sequence">50</field>
+        <field name="name">grok-2</field>
+        <field name="display_name">Grok 2 (Legacy)</field>
+        <field name="state">legacy</field>
+        <field name="notes">xAI redirects this slug to Grok 4.3 at Grok 4.3 rates.</field>
+    </record>
+    <record id="ai_model_grok_grok_1_5" model="ai.financial.model.config">
+        <field name="provider">grok</field>
+        <field name="sequence">60</field>
+        <field name="name">grok-1.5</field>
+        <field name="display_name">Grok 1.5</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Early xAI model — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_grok_grok_1" model="ai.financial.model.config">
+        <field name="provider">grok</field>
+        <field name="sequence">70</field>
+        <field name="name">grok-1</field>
+        <field name="display_name">Grok 1</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">xAI’s first model — kept for historical reference only.</field>
+    </record>
+
+    <!-- ───────────────────────── DeepSeek ───────────────────────── -->
+    <record id="ai_model_deepseek_deepseek_v4_flash" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">10</field>
+        <field name="name">deepseek-v4-flash</field>
+        <field name="display_name">DeepSeek V4 Flash (Recommended — Fast &amp; Cheap)</field>
+        <field name="state">active</field>
+        <field name="is_default" eval="True"/>
+    </record>
+    <record id="ai_model_deepseek_deepseek_v4_pro" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">20</field>
+        <field name="name">deepseek-v4-pro</field>
+        <field name="display_name">DeepSeek V4 Pro (Most Capable)</field>
+        <field name="state">active</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_chat" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">30</field>
+        <field name="name">deepseek-chat</field>
+        <field name="display_name">DeepSeek Chat (Rolling alias)</field>
+        <field name="state">legacy</field>
+        <field name="notes">Rolling alias — DeepSeek upgrades what this points to over time; sunsetting Jul 24, 2026.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_reasoner" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">40</field>
+        <field name="name">deepseek-reasoner</field>
+        <field name="display_name">DeepSeek Reasoner (Rolling alias)</field>
+        <field name="state">legacy</field>
+        <field name="notes">Rolling alias for the R1-family reasoning model; sunsetting Jul 24, 2026.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_coder" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">50</field>
+        <field name="name">deepseek-coder</field>
+        <field name="display_name">DeepSeek Coder (Legacy)</field>
+        <field name="state">legacy</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_v3_2" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">60</field>
+        <field name="name">deepseek-v3.2</field>
+        <field name="display_name">DeepSeek V3.2</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Superseded by V4 — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_v3_1" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">70</field>
+        <field name="name">deepseek-v3.1</field>
+        <field name="display_name">DeepSeek V3.1</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Superseded by V4 — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_v3" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">80</field>
+        <field name="name">deepseek-v3</field>
+        <field name="display_name">DeepSeek V3</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Superseded by V4 — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_r1" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">90</field>
+        <field name="name">deepseek-r1</field>
+        <field name="display_name">DeepSeek R1</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Superseded by the Reasoner alias — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_r1_zero" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">100</field>
+        <field name="name">deepseek-r1-zero</field>
+        <field name="display_name">DeepSeek R1-Zero</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Research preview — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_v2_5" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">110</field>
+        <field name="name">deepseek-v2.5</field>
+        <field name="display_name">DeepSeek V2.5</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Superseded — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_v2" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">120</field>
+        <field name="name">deepseek-v2</field>
+        <field name="display_name">DeepSeek V2</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Superseded — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_coder_v2" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">130</field>
+        <field name="name">deepseek-coder-v2</field>
+        <field name="display_name">DeepSeek Coder V2</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Superseded — kept for historical reference only.</field>
+    </record>
+    <record id="ai_model_deepseek_deepseek_math" model="ai.financial.model.config">
+        <field name="provider">deepseek</field>
+        <field name="sequence">140</field>
+        <field name="name">deepseek-math</field>
+        <field name="display_name">DeepSeek Math</field>
+        <field name="state">deprecated</field>
+        <field name="active" eval="False"/>
+        <field name="notes">Specialized math model — kept for historical reference only.</field>
+    </record>
+</odoo>

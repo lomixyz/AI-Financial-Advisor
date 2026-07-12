@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Enhanced AI Financial Report Views with Multi-Provider Support -->
+
+    <!-- Form View -->
+    <record id="view_ai_financial_report_form" model="ir.ui.view">
+        <field name="name">ai.financial.report.form</field>
+        <field name="model">ai.financial.report</field>
+        <field name="arch" type="xml">
+            <form string="AI Financial Report">
+                <header>
+                    <button name="action_compute_financials"
+                            type="object"
+                            string="Compute Financials"
+                            class="btn-primary"
+                            invisible = "state in('computed','ai_analyzed')"/>
+
+                    <button name="action_run_ai_analysis"
+                            type="object"
+                            string="Run AI Analysis"
+                            class="btn-success"
+                            invisible = "state in('draft','ai_analyzed')"/>
+
+                    <button name="action_print_report"
+                            type="object"
+                            string="Print PDF"
+                            class="btn-secondary"
+                            state="ai_analyzed"/>
+
+                    <button name="action_reset_to_draft"
+                            type="object"
+                            string="Reset to Draft"
+                            class="btn-warning"
+                    invisible = "state in('draft','ai_analyzed')"/>
+
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <!-- Identity -->
+                    <div class="oe_button_box">
+                        <button type="object"
+                                name="action_print_report"
+                                class="oe_stat_button"
+                                icon="fa-file-pdf-o"
+                                state="ai_analyzed">
+                            <span>Export to PDF</span>
+                        </button>
+                    </div>
+
+                    <h1 class="o_title">
+                        <field name="name"/>
+                    </h1>
+
+                    <group>
+                        <group>
+                            <field name="company_id" readonly="state == 'ai_analyzed'"/>
+                            <field name="currency_id" readonly="1" />
+                        </group>
+                        <group>
+                            <field name="date_from" readonly="state == 'ai_analyzed'"/>
+                            <field name="date_to" readonly="state == 'ai_analyzed'"/>
+                        </group>
+                    </group>
+
+                    <!-- AI Provider Settings -->
+                    <group string="AI Provider Settings">
+                        <group>
+                            <field name="ai_provider" readonly="state == 'ai_analyzed'"/>
+                            <field name="ai_model_id" options="{'no_quick_create': True}"
+                                   context="{'default_provider': ai_provider}" readonly="state == 'ai_analyzed'"/>
+                            <field name="ai_model" invisible="1"/>
+                        </group>
+                        <group>
+                            <span class="text-muted" colspan="2">
+                                Choose your preferred AI provider and model. Each has different costs and quality levels.
+                                You can switch providers/models for the same report to compare recommendations.
+                                Leave the model empty to use the default configured in Settings.
+                            </span>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <!-- Balance Sheet -->
+                        <page string="Balance Sheet" state="computed,ai_analyzed">
+                            <group string="Assets">
+                                <group>
+                                    <field name="cash_and_equivalents" readonly="state == 'ai_analyzed'"/>
+                                    <field name="accounts_receivable" readonly="state == 'ai_analyzed'"/>
+                                    <field name="inventory" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                                <group>
+                                    <field name="current_assets" readonly="state == 'ai_analyzed'"/>
+                                    <field name="fixed_assets" readonly="state == 'ai_analyzed'"/>
+                                    <field name="total_assets" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                            </group>
+                            <group string="Liabilities &amp; Equity">
+                                <group>
+                                    <field name="accounts_payable" readonly="state == 'ai_analyzed'"/>
+                                    <field name="short_term_debt" readonly="state == 'ai_analyzed'"/>
+                                    <field name="current_liabilities" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                                <group>
+                                    <field name="long_term_debt" readonly="state == 'ai_analyzed'"/>
+                                    <field name="non_current_liabilities" readonly="state == 'ai_analyzed'"/>
+                                    <field name="total_liabilities" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                            </group>
+                            <group string="Equity">
+                                <field name="total_equity" readonly="state == 'ai_analyzed'"/>
+                            </group>
+                        </page>
+
+                        <!-- Income Statement -->
+                        <page string="Income Statement" state="computed,ai_analyzed">
+                            <group string="Revenue &amp; Expenses">
+                                <group>
+                                    <field name="total_revenue" readonly="state == 'ai_analyzed'"/>
+                                    <field name="cost_of_goods_sold" readonly="state == 'ai_analyzed'"/>
+                                    <field name="gross_profit" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                                <group>
+                                    <field name="operating_expenses" readonly="state == 'ai_analyzed'"/>
+                                    <field name="total_expenses" readonly="state == 'ai_analyzed'"/>
+                                    <field name="net_income" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- KPIs -->
+                        <page string="Key Performance Indicators" state="computed,ai_analyzed">
+                            <group>
+                                <group>
+                                    <field name="current_ratio" readonly="state == 'ai_analyzed'"/>
+                                    <field name="gross_margin_pct" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                                <group>
+                                    <field name="debt_to_equity" readonly="state == 'ai_analyzed'"/>
+                                    <field name="net_margin_pct" readonly="state == 'ai_analyzed'"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field name="return_on_assets" readonly="state == 'ai_analyzed'"/>
+                            </group>
+                        </page>
+
+                        <!-- AI Analysis -->
+                        <page string="AI Analysis" state="ai_analyzed">
+                            <group string="Analysis Metadata">
+                                <field name="ai_generated_at" readonly="state == 'ai_analyzed'"/>
+                            </group>
+
+                            <group string="Financial Health Score">
+                                <div class="alert alert-info">
+                                    <h3>
+                                        <field name="ai_overall_score"/> / 100 —
+                                        <field name="ai_score_label"/>
+                                    </h3>
+                                </div>
+                            </group>
+
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;">Executive Summary</h4>
+                                <field name="ai_summary" widget="html" nolabel="1" style="width:100%;" readonly="state == 'ai_analyzed'"/>
+                            </div>
+
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;">Income Increase Recommendations</h4>
+                                <field name="ai_income_recommendations" widget="html" nolabel="1" style="width:100%;" readonly="state == 'ai_analyzed'"/>
+                            </div>
+
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;">Expense Reduction Recommendations</h4>
+                                <field name="ai_expense_recommendations" widget="html" nolabel="1" style="width:100%;" readonly="state == 'ai_analyzed'"/>
+                            </div>
+
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;">Purchasing Optimization</h4>
+                                <field name="ai_purchasing_recommendations" widget="html" nolabel="1" style="width:100%;" readonly="state == 'ai_analyzed'"/>
+                            </div>
+
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;color:#dc3545;">Risk Alerts</h4>
+                                <div class="alert alert-danger" style="width:100%;">
+                                    <field name="ai_risk_alerts" widget="html" nolabel="1" style="width:100%;" readonly="state == 'ai_analyzed'"/>
+                                </div>
+                            </div>
+                        </page>
+
+                        <!-- Breakdowns -->
+                        <page string="Financial Breakdowns" state="computed,ai_analyzed">
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;">Expense Breakdown</h4>
+                                <field name="expense_breakdown_json" nolabel="1" readonly="1" style="width:100%;"/>
+                            </div>
+<!--                            <group string="Expense Breakdown">-->
+<!--                                <field name="expense_breakdown_json" widget="html" nolabel="1"/>-->
+<!--                            </group>-->
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;">Revenue Breakdown</h4>
+                                <field name="revenue_breakdown_json" nolabel="1" readonly="1" style="width:100%;" />
+                            </div>
+<!--                            <group string="Revenue Breakdown">-->
+<!--                                <field name="revenue_breakdown_json" widget="html" nolabel="1"/>-->
+<!--                            </group>-->
+                            <div class="o_field_html" style="width:100%;padding:8px 0;">
+                                <h4 style="font-weight:600;margin-bottom:8px;">Top Suppliers</h4>
+                                <field name="top_suppliers_json" nolabel="1" readonly="1" style="width:100%;"/>
+                            </div>
+<!--                            <group string="Top Suppliers">-->
+<!--                                <field name="top_suppliers_json" widget="html" nolabel="1"/>-->
+<!--                            </group>-->
+                        </page>
+
+                        <!-- Line Items -->
+                        <page string="Expense Lines" state="computed,ai_analyzed">
+                            <field name="expense_line_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                    <field name="percentage"/>
+                                    <field name="note"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Revenue Lines" state="computed,ai_analyzed">
+                            <field name="revenue_line_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="amount"/>
+                                    <field name="percentage"/>
+                                    <field name="note"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <!-- Chatter -->
+<!--                <div class="oe_chatter">-->
+<!--                    <field name="message_ids" widget="mail_thread"/>-->
+<!--                    <field name="activity_ids" widget="mail_activity"/>-->
+<!--                </div>-->
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_ai_financial_report_tree" model="ir.ui.view">
+        <field name="name">ai.financial.report.tree</field>
+        <field name="model">ai.financial.report</field>
+        <field name="arch" type="xml">
+            <tree string="AI Financial Reports">
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="ai_provider"/>
+                <field name="ai_model_id"/>
+                <field name="ai_overall_score"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_ai_financial_report_search" model="ir.ui.view">
+        <field name="name">ai.financial.report.search</field>
+        <field name="model">ai.financial.report</field>
+        <field name="arch" type="xml">
+            <search string="AI Financial Reports">
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="ai_provider"/>
+                <separator/>
+                <filter name="draft" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <filter name="computed" string="Computed" domain="[('state', '=', 'computed')]"/>
+                <filter name="analyzed" string="AI Analyzed" domain="[('state', '=', 'ai_analyzed')]"/>
+                <separator/>
+                <filter name="claude" string="Claude" domain="[('ai_provider', '=', 'claude')]"/>
+                <filter name="chatgpt" string="ChatGPT" domain="[('ai_provider', '=', 'chatgpt')]"/>
+                <filter name="deepseek" string="DeepSeek" domain="[('ai_provider', '=', 'deepseek')]"/>
+                <filter name="grok" string="Grok" domain="[('ai_provider', '=', 'grok')]"/>
+                <filter name="gemini" string="Gemini" domain="[('ai_provider', '=', 'gemini')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="by_company" string="Company" context="{'group_by': 'company_id'}"/>
+                    <filter name="by_provider" string="AI Provider" context="{'group_by': 'ai_provider'}"/>
+                    <filter name="by_state" string="State" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_ai_financial_report" model="ir.actions.act_window">
+        <field name="name">AI Financial Reports</field>
+        <field name="res_model">ai.financial.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No financial reports found.<br/>
+                Create a new AI Financial Report to start analyzing your company's financial position.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_ai_financial_report"
+              name="Reports"
+              action="action_ai_financial_report"
+              parent="menu_ai_financial_advisor_root"
+              sequence="10"/>
+
+</odoo>

@@ -1,0 +1,12 @@
+# AI Financial Advisor — Model Mixin Patch
+# This file patches the AIFinancialReport to inherit mail.thread + mail.activity.mixin
+# Add this to models/__init__.py if you want chatter support
+
+# In ai_financial_report.py, change:
+#   class AIFinancialReport(models.Model):
+# to:
+#   class AIFinancialReport(models.Model):
+#       _inherit = ['mail.thread', 'mail.activity.mixin']
+#
+# And add to __manifest__.py depends:
+#   'mail',

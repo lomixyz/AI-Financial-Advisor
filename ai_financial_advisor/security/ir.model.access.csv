@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_financial_report_manager,ai.financial.report manager,model_ai_financial_report,account.group_account_manager,1,1,1,1
+access_ai_financial_report_user,ai.financial.report user,model_ai_financial_report,account.group_account_user,1,0,0,0
+access_ai_financial_report_line_manager,ai.financial.report.line manager,model_ai_financial_report_line,account.group_account_manager,1,1,1,1
+access_ai_financial_report_line_user,ai.financial.report.line user,model_ai_financial_report_line,account.group_account_user,1,0,0,0
+access_ai_financial_model_config_manager,ai.financial.model.config manager,model_ai_financial_model_config,account.group_account_manager,1,1,1,1
+access_ai_financial_model_config_user,ai.financial.model.config user,model_ai_financial_model_config,account.group_account_user,1,0,0,0

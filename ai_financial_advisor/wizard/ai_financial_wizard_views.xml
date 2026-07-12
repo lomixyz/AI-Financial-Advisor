@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- AI Financial Wizard Views -->
+
+    <record id="view_ai_financial_wizard_form" model="ir.ui.view">
+        <field name="name">ai.financial.wizard.form</field>
+        <field name="model">ai.financial.wizard</field>
+        <field name="arch" type="xml">
+            <form string="AI Financial Report Wizard">
+                <!-- Step 1: Report Details -->
+                <group state="details">
+                    <h2>Step 1: Report Details</h2>
+                    <p>Select the company and date range for financial analysis.</p>
+                    <group>
+                        <field name="company_id" />
+                        <field name="date_from" />
+                        <field name="date_to" />
+                    </group>
+                    <footer>
+                        <button name="action_next" type="object" string="Next" class="btn-primary" />
+                    </footer>
+                </group>
+
+                <!-- Step 2: Provider Selection -->
+                <group state="provider">
+                    <h2>Step 2: Select AI Provider</h2>
+                    <p>Choose which AI provider to use for analysis.</p>
+                    <group>
+                        <field name="ai_provider" widget="radio" />
+                        <field name="ai_model_id" options="{'no_quick_create': True}"
+                               context="{'default_provider': ai_provider}"
+                               placeholder="Use Settings default"/>
+                    </group>
+                    <div class="alert alert-info">
+                        <ul>
+                            <li><strong>Claude:</strong> Recommended - balanced quality and cost</li>
+                            <li><strong>ChatGPT:</strong> Fastest responses - proven quality</li>
+                            <li><strong>DeepSeek:</strong> Most affordable option</li>
+                            <li><strong>Grok:</strong> Latest option for experimentation</li>
+                        </ul>
+                    </div>
+                    <footer>
+                        <button name="action_previous" type="object" string="Back" class="btn-secondary" />
+                        <button name="action_next" type="object" string="Next" class="btn-primary" />
+                    </footer>
+                </group>
+
+                <!-- Step 3: Options -->
+                <group state="options">
+                    <h2>Step 3: Analysis Options</h2>
+                    <p>Configure additional analysis options.</p>
+                    <group>
+                        <field name="auto_export" />
+                        <field name="notify_manager" />
+                    </group>
+                    <footer>
+                        <button name="action_previous" type="object" string="Back" class="btn-secondary" />
+                        <button name="action_next" type="object" string="Create Report" class="btn-primary" />
+                    </footer>
+                </group>
+
+                <!-- Processing -->
+                <group state="processing">
+                    <p class="text-center">
+                        <i class="fa fa-spinner fa-spin" /> Processing your financial data...
+                    </p>
+                </group>
+
+                <!-- Complete -->
+                <group state="complete">
+                    <h2>Report Complete!</h2>
+                    <p>Your financial analysis has been completed successfully.</p>
+                    <group>
+                        <field name="report_id" readonly="1" />
+                    </group>
+                    <footer>
+                        <button name="action_open_report" type="object" string="View Report" class="btn-primary" />
+                        <button string="Close" class="btn-secondary" special="cancel" />
+                    </footer>
+                </group>
+
+                <field name="state" invisible="1" />
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record id="action_ai_financial_wizard" model="ir.actions.act_window">
+        <field name="name">Create AI Financial Report</field>
+        <field name="res_model">ai.financial.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_ai_financial_wizard"
+              name="Create AI Report (Wizard)"
+              action="action_ai_financial_wizard"
+              parent="ai_financial_advisor.menu_ai_financial_report"
+              sequence="51"/>
+
+</odoo>

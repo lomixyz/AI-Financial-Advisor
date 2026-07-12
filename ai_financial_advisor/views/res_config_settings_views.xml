@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================================================= -->
+    <!-- AI Financial Advisor Settings                             -->
+    <!-- Odoo 17 Compatible                                        -->
+    <!-- ========================================================= -->
+
+    <record id="res_config_settings_view_form_ai_advisor" model="ir.ui.view">
+        <field name="name">res.config.settings.form.ai.advisor</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="priority" eval="90"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//form" position="inside">
+
+                <app string="AI Financial Advisor"
+                     name="ai_financial_advisor"
+                     logo="/base/static/description/settings.png">
+
+                    <!-- ================================================= -->
+                    <!-- General Settings                                   -->
+                    <!-- ================================================= -->
+
+                    <block title="General Settings">
+
+                        <setting string="Default AI Provider"
+                                 help="Choose the default AI provider used for analysis">
+                            <field name="preferred_ai_provider"/>
+                        </setting>
+
+                        <setting string="Auto-run AI Analysis"
+                                 help="Automatically run AI analysis after financial computation">
+                            <field name="ai_auto_analyze"/>
+                        </setting>
+
+                        <setting string="Max Tokens for AI Response"
+                                 help="Higher values generate longer responses but cost more">
+                            <field name="ai_max_tokens"/>
+                        </setting>
+
+                        <setting string="AI Model Catalog"
+                                 help="Add, edit or archive the exact models offered below — no module update needed when a vendor ships a new one">
+                            <button type="action"
+                                    name="%(ai_financial_advisor.action_ai_financial_model_config)d"
+                                    string="Manage AI Models →"
+                                    class="btn-link"/>
+                        </setting>
+
+                    </block>
+
+                    <!-- ================================================= -->
+                    <!-- Claude Settings                                    -->
+                    <!-- ================================================= -->
+
+                    <block title="Claude (Anthropic) Configuration">
+
+                        <setting string="Claude API Key">
+                            <field name="claude_api_key" password="True"/>
+                        </setting>
+
+                        <setting string="Claude Model"
+                                 help="Don't see the model you need? Add it to the catalog below.">
+                            <field name="claude_model"/>
+                            <button type="action"
+                                    name="%(ai_financial_advisor.action_ai_financial_model_config)d"
+                                    string="+ Add Claude Model"
+                                    class="btn-link"
+                                    context="{'default_provider': 'claude', 'search_default_claude': 1}"/>
+                        </setting>
+
+                        <div class="mt16">
+                            <button type="object"
+                                    name="action_test_claude_connection"
+                                    string="Test Claude Connection"
+                                    class="btn btn-primary"/>
+                        </div>
+
+                    </block>
+
+                    <!-- ================================================= -->
+                    <!-- ChatGPT Settings                                   -->
+                    <!-- ================================================= -->
+
+                    <block title="ChatGPT (OpenAI) Configuration">
+
+                        <setting string="ChatGPT API Key">
+                            <field name="chatgpt_api_key" password="True"/>
+                        </setting>
+
+                        <setting string="ChatGPT Model"
+                                 help="Don't see the model you need? Add it to the catalog below.">
+                            <field name="chatgpt_model"/>
+                            <button type="action"
+                                    name="%(ai_financial_advisor.action_ai_financial_model_config)d"
+                                    string="+ Add ChatGPT Model"
+                                    class="btn-link"
+                                    context="{'default_provider': 'chatgpt', 'search_default_chatgpt': 1}"/>
+                        </setting>
+
+                        <div class="mt16">
+                            <button type="object"
+                                    name="action_test_chatgpt_connection"
+                                    string="Test ChatGPT Connection"
+                                    class="btn btn-primary"/>
+                        </div>
+
+                    </block>
+
+                    <!-- ================================================= -->
+                    <!-- DeepSeek Settings                                  -->
+                    <!-- ================================================= -->
+
+                    <block title="DeepSeek Configuration">
+
+                        <setting string="DeepSeek API Key">
+                            <field name="deepseek_api_key" password="True"/>
+                        </setting>
+
+                        <setting string="DeepSeek Model"
+                                 help="Don't see the model you need? Add it to the catalog below.">
+                            <field name="deepseek_model"/>
+                            <button type="action"
+                                    name="%(ai_financial_advisor.action_ai_financial_model_config)d"
+                                    string="+ Add DeepSeek Model"
+                                    class="btn-link"
+                                    context="{'default_provider': 'deepseek', 'search_default_deepseek': 1}"/>
+                        </setting>
+
+                        <div class="mt16">
+                            <button type="object"
+                                    name="action_test_deepseek_connection"
+                                    string="Test DeepSeek Connection"
+                                    class="btn btn-primary"/>
+                        </div>
+
+                    </block>
+
+                    <!-- ================================================= -->
+                    <!-- Grok Settings                                      -->
+                    <!-- ================================================= -->
+
+                    <block title="Grok (X.ai) Configuration">
+
+                        <setting string="Grok API Key">
+                            <field name="grok_api_key" password="True"/>
+                        </setting>
+
+                        <setting string="Grok Model"
+                                 help="Don't see the model you need? Add it to the catalog below.">
+                            <field name="grok_model"/>
+                            <button type="action"
+                                    name="%(ai_financial_advisor.action_ai_financial_model_config)d"
+                                    string="+ Add Grok Model"
+                                    class="btn-link"
+                                    context="{'default_provider': 'grok', 'search_default_grok': 1}"/>
+                        </setting>
+
+                        <div class="mt16">
+                            <button type="object"
+                                    name="action_test_grok_connection"
+                                    string="Test Grok Connection"
+                                    class="btn btn-primary"/>
+                        </div>
+
+                    </block>
+
+                    <!-- ================================================= -->
+                    <!-- Gemini Settings                                    -->
+                    <!-- ================================================= -->
+
+                    <block title="Gemini (Google) Configuration">
+
+                        <setting string="Gemini API Key"
+                                 help="Get your API key from https://aistudio.google.com/app/apikey">
+                            <field name="gemini_api_key" password="True"/>
+                        </setting>
+
+                        <setting string="Gemini Model"
+                                 help="Don't see the model you need? Add it to the catalog below.">
+                            <field name="gemini_model"/>
+                            <button type="action"
+                                    name="%(ai_financial_advisor.action_ai_financial_model_config)d"
+                                    string="+ Add Gemini Model"
+                                    class="btn-link"
+                                    context="{'default_provider': 'gemini', 'search_default_gemini': 1}"/>
+                        </setting>
+
+                        <div class="mt16">
+                            <button type="object"
+                                    name="action_test_gemini_connection"
+                                    string="Test Gemini Connection"
+                                    class="btn btn-primary"/>
+                        </div>
+
+                    </block>
+
+                    <!-- ================================================= -->
+                    <!-- Information                                        -->
+                    <!-- ================================================= -->
+
+                    <block title="Information">
+
+                        <div class="alert alert-info" role="alert">
+
+                            <h4>Quick Tips</h4>
+
+                            <ul>
+                                <li>
+                                    <strong>Claude:</strong>
+                                    Excellent quality and reasoning. Get key at console.anthropic.com.
+                                </li>
+
+                                <li>
+                                    <strong>ChatGPT:</strong>
+                                    Fast and reliable for most tasks. Get key at platform.openai.com.
+                                </li>
+
+                                <li>
+                                    <strong>DeepSeek:</strong>
+                                    Cost-effective AI provider. Get key at platform.deepseek.com.
+                                </li>
+
+                                <li>
+                                    <strong>Grok:</strong>
+                                    Experimental and latest-generation AI. Get key at x.ai.
+                                </li>
+
+                                <li>
+                                    <strong>Gemini:</strong>
+                                    Google's multimodal AI. Get key at aistudio.google.com.
+                                </li>
+
+                                <li>
+                                    You can configure multiple providers and switch anytime.
+                                </li>
+
+                                <li>
+                                    Use the test buttons to verify your API keys before use.
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </block>
+
+                </app>
+
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

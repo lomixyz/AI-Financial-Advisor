@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="0">
+    <!-- ================================================================ -->
+    <!-- Self-healing Settings repair                                     -->
+    <!-- ================================================================ -->
+    <!-- noupdate="0": this is intentionally re-run on EVERY module        -->
+    <!-- upgrade (not just on first install). Each time the AI Model      -->
+    <!-- Catalog or the built-in provider lists change, this checks the   -->
+    <!-- 5 "*_model" config_parameter values and resets ONLY the ones     -->
+    <!-- that are no longer valid options — anything still valid (i.e.    -->
+    <!-- whatever the admin actually configured) is left untouched.       -->
+    <!--                                                                  -->
+    <!-- This replaces the older, narrower clear_stale_gemini_model.xml,  -->
+    <!-- which unconditionally forced the Gemini model on every upgrade   -->
+    <!-- regardless of whether the stored value was still valid. -->
+    <function model="res.config.settings" name="_repair_stale_ai_model_settings"/>
+</odoo>

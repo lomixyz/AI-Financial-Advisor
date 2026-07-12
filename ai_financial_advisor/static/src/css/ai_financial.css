@@ -1,0 +1,133 @@
+/* AI Financial Advisor — Custom Styles for Odoo 17 */
+
+/* ── Health Score Badge ───────────────────────────────── */
+.ai_health_score_badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.ai_health_excellent  { background: #d5e8d4; color: #27ae60; }
+.ai_health_good       { background: #d6eaf8; color: #2980b9; }
+.ai_health_fair       { background: #fef9e7; color: #f39c12; }
+.ai_health_attention  { background: #fdebd0; color: #e67e22; }
+.ai_health_critical   { background: #fdedec; color: #c0392b; }
+
+/* ── Recommendation Panels ────────────────────────────── */
+.ai_rec_panel {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.ai_rec_income      { background: #eafaf1; border-left: 5px solid #27ae60; }
+.ai_rec_expense     { background: #fef9e7; border-left: 5px solid #f39c12; }
+.ai_rec_purchasing  { background: #f5eef8; border-left: 5px solid #8e44ad; }
+.ai_rec_risk        { background: #fdedec; border-left: 5px solid #e74c3c; }
+
+.ai_rec_panel h4 {
+    margin-top: 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── KPI Cards ────────────────────────────────────────── */
+.ai_kpi_card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+}
+
+.ai_kpi_card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.ai_kpi_card .kpi_value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.ai_kpi_card .kpi_label {
+    font-size: 12px;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Status Badge Overrides ───────────────────────────── */
+.o_field_widget.o_field_badge span.badge[data-value="ai_analyzed"] {
+    background-color: #27ae60 !important;
+}
+.o_field_widget.o_field_badge span.badge[data-value="computed"] {
+    background-color: #3498db !important;
+}
+
+/* ── Report Form Enhancements ─────────────────────────── */
+.o_form_view .ai_financial_header_banner {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+}
+
+.ai_score_ring {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 6px solid #f1c40f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: #f1c40f;
+}
+
+/* ── AI Analysis Text Fields ─────────────────────────────────────────────── */
+/* Prevent the html widget from collapsing into a narrow column */
+.o_field_html,
+.o_field_html .odoo-editor-editable,
+.o_field_html .o_editable,
+.o_field_html p,
+.o_field_html ul,
+.o_field_html ol,
+.o_field_html li {
+    width: 100% !important;
+    max-width: 100% !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    line-height: 1.6 !important;
+}
+
+.o_field_html p {
+    margin: 4px 0 8px 0;
+}
+
+.o_field_html ul,
+.o_field_html ol {
+    padding-left: 24px;
+    margin: 4px 0 8px 0;
+}
+
+.o_field_html li {
+    margin-bottom: 4px;
+}
+
+.o_field_html h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
