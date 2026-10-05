@@ -125,13 +125,13 @@
 
     <!-- ================================================================ -->
     <!-- Menus                                                            -->
-    <!-- The existing top-level "AI Financial Reports" menu becomes a     -->
-    <!-- "Reports" sub-item under a new "AI Financial Advisor" category,  -->
-    <!-- which also gains "AI Models" (the catalog) and "Configuration".  -->
+    <!-- Standalone top-level app (its own tile + icon in the main Odoo   -->
+    <!-- Apps switcher), with "Reports", "AI Models" and "Configuration"  -->
+    <!-- as its sub-menus.                                                -->
     <!-- ================================================================ -->
     <menuitem id="menu_ai_financial_advisor_root"
               name="AI Financial Advisor"
-              parent="account.menu_finance"
+              web_icon="ai_financial_advisor,static/description/icon.png"
               sequence="50"/>
 
     <menuitem id="menu_ai_financial_model_config"

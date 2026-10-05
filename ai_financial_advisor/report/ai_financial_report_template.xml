@@ -214,7 +214,7 @@
                         <div style="background:#eaf4fb; border-left:4px solid #3498db; padding:12px 15px; margin-bottom:20px; border-radius:4px;">
                             <h3 style="color:#2980b9; margin-top:0;">Executive Summary</h3>
                             <p style="margin:0; font-size:12px; line-height:1.6;">
-                                <t t-raw="o.ai_summary"/>
+                                <t t-out="o.ai_summary"/>
                             </p>
                         </div>
 
@@ -227,7 +227,7 @@
                                             📈 Income Increase Recommendations
                                         </h3>
                                         <p style="font-size:11px; line-height:1.7; margin:0; white-space:pre-wrap;">
-                                            <t t-raw="o.ai_income_recommendations"/>
+                                            <t t-out="o.ai_income_recommendations"/>
                                         </p>
                                     </div>
                                 </td>
@@ -237,7 +237,7 @@
                                             ✂️ Expense Reduction Recommendations
                                         </h3>
                                         <p style="font-size:11px; line-height:1.7; margin:0; white-space:pre-wrap;">
-                                            <t t-raw="o.ai_expense_recommendations"/>
+                                            <t t-out="o.ai_expense_recommendations"/>
                                         </p>
                                     </div>
                                 </td>
@@ -252,7 +252,7 @@
                                             🛒 Purchasing Optimization
                                         </h3>
                                         <p style="font-size:11px; line-height:1.7; margin:0; white-space:pre-wrap;">
-                                            <t t-raw="o.ai_purchasing_recommendations"/>
+                                            <t t-out="o.ai_purchasing_recommendations"/>
                                         </p>
                                     </div>
                                 </td>
@@ -262,7 +262,7 @@
                                             ⚠️ Risk Alerts
                                         </h3>
                                         <p style="font-size:11px; line-height:1.7; margin:0; white-space:pre-wrap;">
-                                            <t t-raw="o.ai_risk_alerts"/>
+                                            <t t-out="o.ai_risk_alerts"/>
                                         </p>
                                     </div>
                                 </td>

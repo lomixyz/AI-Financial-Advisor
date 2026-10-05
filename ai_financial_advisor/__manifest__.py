@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'AI Financial Advisor & Position Report (Multi-Provider)',
-    'version': '2.2.0',                    # bumped: admin-managed AI Model Catalog
+    'version': '17.0.2.3.1',                # top-level app menu + new AI icon
     'category': 'Accounting/Reporting',
     'sequence': 10,
     'summary': 'AI-powered Financial Analysis with Claude, ChatGPT, DeepSeek, Grok & Gemini — with a fully admin-managed AI Model Catalog',
@@ -22,8 +22,6 @@ Key features:
   by multiple providers for comparison.
 - Test Connection buttons per provider in Settings.
 - Printable PDF export of any analysis.
-
-See the full walkthrough with screenshots below.
 """,
     'author': 'Allam Bushra',
     'website': 'https://www.linkedin.com/in/lomixyz/',
@@ -63,8 +61,8 @@ See the full walkthrough with screenshots below.
     'installable': True,
     'auto_install': False,
     'application': True,
-    'price': 7.0,
-    'currency': 'EUR',
+    'price': 3.0,
+    'currency': 'USD',
 
     # === REMOVED problematic hooks ===
     # 'post_init_hook': 'post_init_hook',
